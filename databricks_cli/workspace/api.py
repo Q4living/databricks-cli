@@ -157,7 +157,7 @@ class WorkspaceApi(object):
                     click.echo(('{} does not have a valid extension of {}. Skip this file and ' +
                                 'continue.').format(cur_src, extensions))
 
-    def export_workspace_dir(self, source_path, target_path, fmt, overwrite, headers=None):
+    def export_workspace_dir(self, source_path, target_path, fmt, overwrite=True, headers=None):
         if os.path.isfile(target_path):
             click.echo('{} exists as a file. Skipping this subtree {}'
                        .format(target_path, source_path))

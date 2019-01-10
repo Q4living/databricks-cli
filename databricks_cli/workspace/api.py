@@ -158,6 +158,9 @@ class WorkspaceApi(object):
                                 'continue.').format(cur_src, extensions))
 
     def export_workspace_dir(self, source_path, target_path, fmt, overwrite=True, headers=None):
+        click.echo("The format is {}".format(fmt))
+        click.echo("The overwrite is {}".format(overwrite))
+    
         if os.path.isfile(target_path):
             click.echo('{} exists as a file. Skipping this subtree {}'
                        .format(target_path, source_path))

@@ -158,9 +158,6 @@ class WorkspaceApi(object):
                                 'continue.').format(cur_src, extensions))
 
     def export_workspace_dir(self, source_path, target_path, fmt, overwrite=True, headers=None):
-        click.echo("The format is {}".format(fmt))
-        click.echo("The overwrite is {}".format(overwrite))
-    
         if os.path.isfile(target_path):
             click.echo('{} exists as a file. Skipping this subtree {}'
                        .format(target_path, source_path))
@@ -171,7 +168,7 @@ class WorkspaceApi(object):
             cur_src = obj.path
             cur_dst = os.path.join(target_path, obj.basename)
             if obj.is_dir:
-                self.export_workspace_dir(cur_src, cur_dst, overwrite, headers=headers)
+                self.export_workspace_dir(cur_src, cur_dst, fmt, overwrite, headers=headers)
             elif obj.is_notebook:
                 cur_dst = cur_dst + WorkspaceLanguage.to_extension(obj.language)
                 try:
